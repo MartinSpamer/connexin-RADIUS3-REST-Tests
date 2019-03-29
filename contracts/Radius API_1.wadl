@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+  <doc xml:lang="en" title="Radius API">This is the Connexin Radius API</doc>
+  <resources base="">
+    <resource path="accounting_entries" id="/accounting_entries">
+      <doc xml:lang="en" title="/accounting_entries"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Accounting Entries</doc>
+        <request>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Accounting Entries for</doc>
+          </param>
+          <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="username Parameter">The RADIUS Username to return Accounting Entries for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="accounting_entries/{id}" id="/accounting_entries/{id}">
+      <doc xml:lang="en" title="/accounting_entries/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns an Accounting Entry by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="admins" id="/admins">
+      <doc xml:lang="en" title="/admins"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Admins</doc>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create an Admin</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="admins/{id}" id="/admins/{id}">
+      <doc xml:lang="en" title="/admins/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns an Admin by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update an Admin</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete an Admin</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="audits" id="/audits">
+      <doc xml:lang="en" title="/audits"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Audits</doc>
+        <request>
+          <param name="model" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="model Parameter">The Model Name to return Audit Log Entries for</doc>
+          </param>
+          <param name="entity_id" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="entity_id Parameter">The Record Id to return Audit Log Entires for</doc>
+          </param>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Audit Log Entries for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="audits/{id}" id="/audits/{id}">
+      <doc xml:lang="en" title="/audits/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns an Audit by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="event_types" id="/event_types">
+      <doc xml:lang="en" title="/event_types"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Event Types</doc>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="event_types/{id}" id="/event_types/{id}">
+      <doc xml:lang="en" title="/event_types/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns an Event Type by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="events" id="/events">
+      <doc xml:lang="en" title="/events"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Events</doc>
+        <request>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="events/{id}" id="/events/{id}">
+      <doc xml:lang="en" title="/events/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns an Event by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="nas" id="/nas">
+      <doc xml:lang="en" title="/nas"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of NAS</doc>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a NAS</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="nas/{id}" id="/nas/{id}">
+      <doc xml:lang="en" title="/nas/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a NAS by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Nas</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a Nas</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="radius_attributes" id="/radius_attributes">
+      <doc xml:lang="en" title="/radius_attributes"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of RADIUS Attributes</doc>
+        <request>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a RADIUS Attribute</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="radius_attributes/{id}" id="/radius_attributes/{id}">
+      <doc xml:lang="en" title="/radius_attributes/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a RADIUS Attribute by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a RadiusAttribute</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a RadiusAttribute</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="resellers" id="/resellers">
+      <doc xml:lang="en" title="/resellers"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Resellers</doc>
+        <request>
+          <param name="name" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="name Parameter">The name of the Reseller to return</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a Reseller</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="resellers/{id}" id="/resellers/{id}">
+      <doc xml:lang="en" title="/resellers/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Reseller by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Reseller</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a Reseller</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="static_ip_ranges" id="/static_ip_ranges">
+      <doc xml:lang="en" title="/static_ip_ranges"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Static IP Ranges</doc>
+        <request>
+          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Static IP Ranges for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a Static IP Range</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="static_ip_ranges/{id}" id="/static_ip_ranges/{id}">
+      <doc xml:lang="en" title="/static_ip_ranges/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Static IP Range by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Static IP Range</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a Static IP Range</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="statuses" id="/statuses">
+      <doc xml:lang="en" title="/statuses"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Statuses</doc>
+        <request>
+          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Statuses for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a Status</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="statuses/{id}" id="/statuses/{id}">
+      <doc xml:lang="en" title="/statuses/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Status by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Status</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a Status</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="transient_packages" id="/transient_packages">
+      <doc xml:lang="en" title="/transient_packages"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Transient Packages</doc>
+        <request>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Transient Packages for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a Transient Package</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="transient_packages/{id}" id="/transient_packages/{id}">
+      <doc xml:lang="en" title="/transient_packages/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Transient Package by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Transient Package</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a Transient Package</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users" id="/users">
+      <doc xml:lang="en" title="/users"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Users</doc>
+        <request>
+          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Users for</doc>
+          </param>
+          <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="username Parameter">A List of RADIUS Usernames to return Users for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users/generate_username" id="/users/generate_username">
+      <doc xml:lang="en" title="/users/generate_username"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Generate an unused RADIUS Username that can be used to create a new User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users/{id}" id="/users/{id}">
+      <doc xml:lang="en" title="/users/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a User by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Delete a User</doc>
+        <request/>
+        <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users/{id}/change_password" id="/users/{id}/change_password">
+      <doc xml:lang="en" title="/users/{id}/change_password"/>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Generate and Apply a new Password to a User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users/{id}/disconnect" id="/users/{id}/disconnect">
+      <doc xml:lang="en" title="/users/{id}/disconnect"/>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Disconnect all the User's current Active Sessions</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="users/{id}/static_ip" id="/users/{id}/static_ip">
+      <doc xml:lang="en" title="/users/{id}/static_ip"/>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Assign a Static IP to a User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="DELETE" id="DELETE">
+        <doc xml:lang="en" title="DELETE">Remove a Static IP from a User</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="webhook_endpoints" id="/webhook_endpoints">
+      <doc xml:lang="en" title="/webhook_endpoints"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Webhook Endpoints</doc>
+        <request>
+          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Users for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="POST" id="POST">
+        <doc xml:lang="en" title="POST">Create a Webhook Endpoint</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="webhook_endpoints/{id}" id="/webhook_endpoints/{id}">
+      <doc xml:lang="en" title="/webhook_endpoints/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Webhook Endpoint by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+      <method name="PUT" id="PUT">
+        <doc xml:lang="en" title="PUT">Update a Webhook Endpoint</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="webhooks" id="/webhooks">
+      <doc xml:lang="en" title="/webhooks"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a list of Webhooks</doc>
+        <request>
+          <param name="webhook_endpoint" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="webhook_endpoint Parameter">The Webhook Endpoint Id to return Users for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+    <resource path="webhooks/{id}" id="/webhooks/{id}">
+      <doc xml:lang="en" title="/webhooks/{id}"/>
+      <method name="GET" id="GET">
+        <doc xml:lang="en" title="GET">Returns a Webhook by Id</doc>
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>
