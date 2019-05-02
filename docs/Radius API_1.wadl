@@ -4,29 +4,20 @@
   <resources base="http://radius-dev-v3.uk.cxn-network.net/api">
     <resource path="accounting_entries" id="/accounting_entries">
       <doc xml:lang="en" title="/accounting_entries"/>
-      <param name="user" default="${#TestCase#userId}" type="xs:integer" required="true" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="user Parameter">The User Id to return Accounting Entries for</doc>
-      </param>
-      <param name="username" default="${#TestCase#username}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="username Parameter">The RADIUS Username to return Accounting Entries for</doc>
-      </param>
-      <param name="page" default="${#TestCast#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="page Parameter">page - The page of results to return</doc>
-        <option value="1"/>
-      </param>
-      <param name="limit" default="${#TestCast#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="limit Parameter">limit - The number of records to return per page</doc>
-        <option value="25"/>
-      </param>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Accounting Entries</doc>
-        <request/>
+        <request>
+          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The User Id to return Accounting Entries for</doc>
+          </param>
+          <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="username Parameter">The RADIUS Username to return Accounting Entries for</doc>
+          </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
-          <representation mediaType="application/json; charset=UTF-8"/>
-        </response>
-        <response status="400">
-          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
     </resource>
@@ -38,20 +29,19 @@
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
-          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
     <resource path="admins" id="/admins">
       <doc xml:lang="en" title="/admins"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Admins</doc>
-        <request/>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
-          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
@@ -89,8 +79,6 @@
     </resource>
     <resource path="audits" id="/audits">
       <doc xml:lang="en" title="/audits"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Audits</doc>
         <request>
@@ -103,6 +91,8 @@
           <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Audit Log Entries for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -122,11 +112,12 @@
     </resource>
     <resource path="event_types" id="/event_types">
       <doc xml:lang="en" title="/event_types"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Event Types</doc>
-        <request/>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
@@ -145,14 +136,14 @@
     </resource>
     <resource path="events" id="/events">
       <doc xml:lang="en" title="/events"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Events</doc>
         <request>
           <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -172,11 +163,12 @@
     </resource>
     <resource path="nas" id="/nas">
       <doc xml:lang="en" title="/nas"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of NAS</doc>
-        <request/>
+        <request>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
@@ -217,14 +209,14 @@
     <resource path="radius_attributes{id}" id="/radius_attributes">
       <doc xml:lang="en" title="/radius_attributes"/>
       <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of RADIUS Attributes</doc>
         <request>
           <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -265,14 +257,14 @@
     </resource>
     <resource path="resellers" id="/resellers">
       <doc xml:lang="en" title="/resellers"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Resellers</doc>
         <request>
           <param name="name" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="name Parameter">The name of the Reseller to return</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -313,14 +305,14 @@
     </resource>
     <resource path="static_ip_ranges" id="/static_ip_ranges">
       <doc xml:lang="en" title="/static_ip_ranges"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Static IP Ranges</doc>
         <request>
           <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Static IP Ranges for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -361,14 +353,14 @@
     </resource>
     <resource path="statuses" id="/statuses">
       <doc xml:lang="en" title="/statuses"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Statuses</doc>
         <request>
           <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Statuses for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -415,8 +407,8 @@
           <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Transient Packages for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -466,8 +458,8 @@
           <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="username Parameter">A List of RADIUS Usernames to return Users for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -529,7 +521,6 @@
     </resource>
     <resource path="users/{id}/disconnect" id="/users/{id}/disconnect">
       <doc xml:lang="en" title="/users/{id}/disconnect"/>
-      <param name="id" default="${#TestCase#UserId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Disconnect all the User's current Active Sessions</doc>
         <request/>
@@ -540,7 +531,6 @@
     </resource>
     <resource path="users/{id}/static_ip" id="/users/{id}/static_ip">
       <doc xml:lang="en" title="/users/{id}/static_ip"/>
-      <param name="id" default="${#TestCase#UserId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Assign a Static IP to a User</doc>
         <request/>
@@ -564,8 +554,8 @@
           <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Users for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -581,7 +571,6 @@
     </resource>
     <resource path="webhook_endpoints/{id}" id="/webhook_endpoints/{id}">
       <doc xml:lang="en" title="/webhook_endpoints/{id}"/>
-      <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Webhook Endpoint by Id</doc>
         <request/>
@@ -599,14 +588,14 @@
     </resource>
     <resource path="webhooks" id="/webhooks">
       <doc xml:lang="en" title="/webhooks"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Webhooks</doc>
         <request>
           <param name="webhook_endpoint" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="webhook_endpoint Parameter">The Webhook Endpoint Id to return Users for</doc>
           </param>
+          <param name="#/components/parameters/pageParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="#/components/parameters/limitParam" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
@@ -615,7 +604,6 @@
     </resource>
     <resource path="webhooks/{id}" id="/webhooks/{id}">
       <doc xml:lang="en" title="/webhooks/{id}"/>
-      <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Webhook by Id</doc>
         <request/>

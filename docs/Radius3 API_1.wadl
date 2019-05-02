@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://wadl.dev.java.net/2009/02">
-  <doc xml:lang="en" title="Radius API">This is the Connexin Radius API</doc>
+  <doc xml:lang="en" title="Radius3 API">This is the Connexin Radius API</doc>
   <resources base="http://radius-dev-v3.uk.cxn-network.net/api">
     <resource path="accounting_entries" id="/accounting_entries">
       <doc xml:lang="en" title="/accounting_entries"/>
-      <param name="user" default="${#TestCase#userId}" type="xs:integer" required="true" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="user Parameter">The User Id to return Accounting Entries for</doc>
+      <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="page Parameter">Page number of results to be retrieved.</doc>
       </param>
-      <param name="username" default="${#TestCase#username}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="username Parameter">The RADIUS Username to return Accounting Entries for</doc>
-      </param>
-      <param name="page" default="${#TestCast#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="page Parameter">page - The page of results to return</doc>
-        <option value="1"/>
-      </param>
-      <param name="limit" default="${#TestCast#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <doc xml:lang="en" title="limit Parameter">limit - The number of records to return per page</doc>
-        <option value="25"/>
+      <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="limit Parameter">The maximum number of records to be return per page</doc>
       </param>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Accounting Entries</doc>
-        <request/>
+        <request>
+          <param name="user" default="${#TestCase#userId}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="user Parameter">The unique ID for the User who's Accounting Entries are retrieved</doc>
+          </param>
+          <param name="username" default="${#TestCase#username}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="username Parameter">The RADIUS Username for Accounting Entries (depreciated)</doc>
+          </param>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved (default: 1)</doc>
+            <option value="${#TestCase#PageNo}"/>
+            <option value="1"/>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page (default: 25)</doc>
+            <option value="${#TestCase#PageLimit}"/>
+            <option value="25"/>
+          </param>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
           <representation mediaType="application/json; charset=UTF-8"/>
@@ -30,12 +39,13 @@
         </response>
       </method>
     </resource>
-    <resource path="accounting_entries/{id}" id="/accounting_entries/{id}">
+    <resource path="accounting_entries/" id="/accounting_entries/{id}">
       <doc xml:lang="en" title="/accounting_entries/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns an Accounting Entry by Id</doc>
-        <request/>
+        <request>
+          <param name="id" default="${#TestCase#userId}" type="xs:integer" required="true" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
           <representation mediaType="application/json; charset=UTF-8"/>
@@ -44,11 +54,16 @@
     </resource>
     <resource path="admins" id="/admins">
       <doc xml:lang="en" title="/admins"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Admins</doc>
-        <request/>
+        <request>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+          </param>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
           <representation mediaType="application/json; charset=UTF-8"/>
@@ -56,27 +71,48 @@
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create an Admin</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="500">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
     <resource path="admins/{id}" id="/admins/{id}">
       <doc xml:lang="en" title="/admins/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#adminId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns an Admin by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="404">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
         <doc xml:lang="en" title="PUT">Update an Admin</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="DELETE" id="DELETE">
@@ -89,8 +125,12 @@
     </resource>
     <resource path="audits" id="/audits">
       <doc xml:lang="en" title="/audits"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+      </param>
+      <param name="limit" type="xs:integer" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+      </param>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Audits</doc>
         <request>
@@ -122,8 +162,12 @@
     </resource>
     <resource path="event_types" id="/event_types">
       <doc xml:lang="en" title="/event_types"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="page" type="xs:integer" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+      </param>
+      <param name="limit" type="xs:integer" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+      </param>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Event Types</doc>
         <request/>
@@ -134,7 +178,7 @@
     </resource>
     <resource path="event_types/{id}" id="/event_types/{id}">
       <doc xml:lang="en" title="/event_types/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#eventTypeId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns an Event Type by Id</doc>
         <request/>
@@ -145,13 +189,17 @@
     </resource>
     <resource path="events" id="/events">
       <doc xml:lang="en" title="/events"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Events</doc>
         <request>
           <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
+          </param>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
@@ -161,7 +209,7 @@
     </resource>
     <resource path="events/{id}" id="/events/{id}">
       <doc xml:lang="en" title="/events/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#eventId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns an Event by Id</doc>
         <request/>
@@ -172,31 +220,49 @@
     </resource>
     <resource path="nas" id="/nas">
       <doc xml:lang="en" title="/nas"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of NAS</doc>
-        <request/>
+        <request>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+          </param>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a NAS</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="500">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
     <resource path="nas/{id}" id="/nas/{id}">
       <doc xml:lang="en" title="/nas/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#nasId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a NAS by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
@@ -214,38 +280,55 @@
         </response>
       </method>
     </resource>
-    <resource path="radius_attributes{id}" id="/radius_attributes">
+    <resource path="radius_attributes" id="/radius_attributes">
       <doc xml:lang="en" title="/radius_attributes"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of RADIUS Attributes</doc>
         <request>
-          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <doc xml:lang="en" title="user Parameter">The User Id to return Events for</doc>
+          <param name="user" default="${#TestCase#userId}" type="xs:string" required="true" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a RADIUS Attribute</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="400">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
     <resource path="radius_attributes/{id}" id="/radius_attributes/{id}">
       <doc xml:lang="en" title="/radius_attributes/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#attributeId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a RADIUS Attribute by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
@@ -265,30 +348,42 @@
     </resource>
     <resource path="resellers" id="/resellers">
       <doc xml:lang="en" title="/resellers"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Resellers</doc>
         <request>
-          <param name="name" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <doc xml:lang="en" title="name Parameter">The name of the Reseller to return</doc>
+          <param name="name" default="${#TestCase#name}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limt}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a Reseller</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
+          <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
     </resource>
     <resource path="resellers/{id}" id="/resellers/{id}">
       <doc xml:lang="en" title="/resellers/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#resellerId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Reseller by Id</doc>
         <request/>
@@ -313,35 +408,53 @@
     </resource>
     <resource path="static_ip_ranges" id="/static_ip_ranges">
       <doc xml:lang="en" title="/static_ip_ranges"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Static IP Ranges</doc>
         <request>
-          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="reseller" default="${#TestCase#resellerId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Static IP Ranges for</doc>
+          </param>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a Static IP Range</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
+          <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
     </resource>
     <resource path="static_ip_ranges/{id}" id="/static_ip_ranges/{id}">
       <doc xml:lang="en" title="/static_ip_ranges/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#id}" type="xs:integer" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Static IP Range by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="400">
+          <representation mediaType="text/html; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
@@ -353,25 +466,38 @@
       </method>
       <method name="DELETE" id="DELETE">
         <doc xml:lang="en" title="DELETE">Delete a Static IP Range</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="204">
           <representation mediaType="application/json"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
     <resource path="statuses" id="/statuses">
       <doc xml:lang="en" title="/statuses"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Statuses</doc>
         <request>
-          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="reseller" default="${#TestCase#reseller}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Statuses for</doc>
+          </param>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
@@ -384,12 +510,13 @@
     </resource>
     <resource path="statuses/{id}" id="/statuses/{id}">
       <doc xml:lang="en" title="/statuses/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#statusId}" type="xs:integer" required="true" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Status by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
@@ -401,9 +528,17 @@
       </method>
       <method name="DELETE" id="DELETE">
         <doc xml:lang="en" title="DELETE">Delete a Status</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="204">
           <representation mediaType="application/json"/>
+        </response>
+        <response status="">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
@@ -412,32 +547,44 @@
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Transient Packages</doc>
         <request>
-          <param name="user" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="user" default="${#TestCase#resellerId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="user Parameter">The User Id to return Transient Packages for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="page" default="${#TestCase#pageNo}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#pageLimit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+          </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a Transient Package</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
+          <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
     </resource>
-    <resource path="transient_packages/{id}" id="/transient_packages/{id}">
+    <resource path="transient_packages/" id="/transient_packages/{id}">
       <doc xml:lang="en" title="/transient_packages/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#packageId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Transient Package by Id</doc>
         <request/>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="PUT" id="PUT">
@@ -460,23 +607,36 @@
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Users</doc>
         <request>
-          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="reseller" default="${#TestCase#reseller}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Users for</doc>
           </param>
-          <param name="username" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="username" default="${#TestCase#username}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="username Parameter">A List of RADIUS Usernames to return Users for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+          </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Create a User</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="400">
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
@@ -493,7 +653,7 @@
     </resource>
     <resource path="users/{id}" id="/users/{id}">
       <doc xml:lang="en" title="/users/{id}"/>
-      <param name="id" default="${#TestCase#id}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+      <param name="id" default="${#TestCase#userId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a User by Id</doc>
         <request/>
@@ -510,8 +670,16 @@
       </method>
       <method name="DELETE" id="DELETE">
         <doc xml:lang="en" title="DELETE">Delete a User</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="204">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
@@ -529,10 +697,11 @@
     </resource>
     <resource path="users/{id}/disconnect" id="/users/{id}/disconnect">
       <doc xml:lang="en" title="/users/{id}/disconnect"/>
-      <param name="id" default="${#TestCase#UserId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Disconnect all the User's current Active Sessions</doc>
-        <request/>
+        <request>
+          <param name="id" default="${#TestCase#userId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
@@ -543,8 +712,16 @@
       <param name="id" default="${#TestCase#UserId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="POST" id="POST">
         <doc xml:lang="en" title="POST">Assign a Static IP to a User</doc>
-        <request/>
+        <request>
+          <representation mediaType="application/json"/>
+        </request>
         <response status="200">
+          <representation mediaType="application/json"/>
+        </response>
+        <response status="404">
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="">
           <representation mediaType="application/json"/>
         </response>
       </method>
@@ -561,14 +738,20 @@
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Webhook Endpoints</doc>
         <request>
-          <param name="reseller" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="reseller" default="${#TestCase#reseller}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="reseller Parameter">The Reseller Id to return Users for</doc>
           </param>
-          <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-          <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
+          </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="text/html; charset=UTF-8"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
       <method name="POST" id="POST">
@@ -579,12 +762,13 @@
         </response>
       </method>
     </resource>
-    <resource path="webhook_endpoints/{id}" id="/webhook_endpoints/{id}">
+    <resource path="webhook_endpoints/" id="/webhook_endpoints/{id}">
       <doc xml:lang="en" title="/webhook_endpoints/{id}"/>
-      <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Webhook Endpoint by Id</doc>
-        <request/>
+        <request>
+          <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
@@ -599,26 +783,35 @@
     </resource>
     <resource path="webhooks" id="/webhooks">
       <doc xml:lang="en" title="/webhooks"/>
-      <param name="page" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
-      <param name="limit" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a list of Webhooks</doc>
         <request>
-          <param name="webhook_endpoint" type="xs:string" required="false" default="" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <param name="webhook_endpoint" default="${#TestCase#endpointId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <doc xml:lang="en" title="webhook_endpoint Parameter">The Webhook Endpoint Id to return Users for</doc>
+          </param>
+          <param name="page" default="${#TestCase#page}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="page Parameter">The page number of results to be retrieved</doc>
+          </param>
+          <param name="limit" default="${#TestCase#limit}" type="xs:integer" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <doc xml:lang="en" title="limit Parameter">limit - The maximum number of records to retrieved per page</doc>
           </param>
         </request>
         <response status="200">
           <representation mediaType="application/json"/>
+          <representation mediaType="application/json; charset=UTF-8"/>
+        </response>
+        <response status="500">
+          <representation mediaType="application/json; charset=UTF-8"/>
         </response>
       </method>
     </resource>
-    <resource path="webhooks/{id}" id="/webhooks/{id}">
+    <resource path="webhooks/" id="/webhooks/{id}">
       <doc xml:lang="en" title="/webhooks/{id}"/>
-      <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="template" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
       <method name="GET" id="GET">
         <doc xml:lang="en" title="GET">Returns a Webhook by Id</doc>
-        <request/>
+        <request>
+          <param name="id" default="${#TestCase#webhookId}" type="xs:string" required="false" style="query" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        </request>
         <response status="200">
           <representation mediaType="application/json"/>
         </response>
