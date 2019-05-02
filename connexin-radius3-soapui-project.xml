@@ -30,7 +30,7 @@
   <con:entry key="Domain" value=""/>
   <con:entry key="Tool Args" value=""/>
   <con:entry key="Save Project" value="false"/>
-</xml-fragment>]]></con:setting></con:settings><con:interface xsi:type="con:RestService" id="a2223477-1413-4148-a503-4a5ee7227398" wadlVersion="http://wadl.dev.java.net/2009/02" name="Radius3 API" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>This is the Connexin Radius API
+</xml-fragment>]]></con:setting><con:setting id="com.smartbear.swagger.ExportSwaggerAction$FormBase Path"/><con:setting id="com.smartbear.swagger.ExportSwaggerAction$FormTarget Folder">C:\Users\m.spamer\soapui-projects\Connexin-RADIUS3\contracts</con:setting><con:setting id="com.smartbear.swagger.ExportSwaggerAction$FormFormat">yaml</con:setting><con:setting id="com.smartbear.swagger.ExportSwaggerAction$FormAPI Version">2.0</con:setting><con:setting id="com.smartbear.swagger.ExportSwaggerAction$FormSwagger Version">2.0</con:setting></con:settings><con:interface xsi:type="con:RestService" id="a2223477-1413-4148-a503-4a5ee7227398" wadlVersion="http://wadl.dev.java.net/2009/02" name="Radius3 API" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:description>This is the Connexin Radius API
 </con:description><con:settings><con:setting id="CreateWadlDocumentationAction@report-directory">C:\Users\m.spamer\soapui-projects\Connexin-RADIUS3\docs</con:setting></con:settings><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://radius-dev-v3.uk.cxn-network.net/api</con:endpoint></con:endpoints><con:resource name="/accounting_entries" path="/accounting_entries" id="59cfa357-6bd6-4662-a527-5638ba18d200"><con:settings/><con:parameters><con:parameter><con:name>page</con:name><con:value>${#TestCase#pageNo}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#pageNo}</con:default><con:description>Page number of results to be retrieved.</con:description></con:parameter><con:parameter><con:name>limit</con:name><con:value>${#TestCase#limit}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#limit}</con:default><con:description>The maximum number of records to be return per page</con:description></con:parameter></con:parameters><con:method name="GET" id="f9a7f582-0786-4e8a-bcea-63c7fba5a0b8" method="GET"><con:description>
 Returns a list of Accounting Entries</con:description><con:settings/><con:parameters><con:parameter required="false"><con:name>user</con:name><con:value>${#TestCase#userId}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#userId}</con:default><con:description>The unique ID for the User who's Accounting Entries are retrieved</con:description></con:parameter><con:parameter><con:name>username</con:name><con:value>${#TestCase#username}</con:value><con:style>QUERY</con:style><con:default>${#TestCase#username}</con:default><con:description>The RADIUS Username for Accounting Entries (depreciated)</con:description></con:parameter><con:parameter><con:name>page</con:name><con:value>${#TestCase#pageNo}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#pageNo}</con:default><con:option>${#TestCase#PageNo}</con:option><con:option>1</con:option><con:description>The page number of results to be retrieved (default: 1)</con:description></con:parameter><con:parameter><con:name>limit</con:name><con:value>${#TestCase#limit}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#limit}</con:default><con:option>${#TestCase#PageLimit}</con:option><con:option>25</con:option><con:description>limit - The maximum number of records to retrieved per page (default: 25)</con:description></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/html; charset=UTF-8</con:mediaType><con:status>400</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:acc="http://radius-dev-v3.uk.cxn-network.net/api/accounting_entries">acc:Response</con:element></con:representation><con:request name="Request 1" id="4d349f18-29d1-435f-ac23-37fe4da76bee" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://radius-dev-v3.uk.cxn-network.net/api</con:endpoint><con:request/><con:originalUri>http://radius-dev-v3.uk.cxn-network.net/api/accounting_entries</con:originalUri><con:credentials><con:username/><con:password/><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="limit" value="${#TestCase#pageLimit}" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>user</con:entry><con:entry>username</con:entry><con:entry>page</con:entry><con:entry>limit</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/accounting_entries/{id}" path="/accounting_entries/" id="9412d460-fa48-49c8-a528-7e8ae9827511"><con:settings/><con:parameters/><con:method name="GET" id="ae5fd929-0dfe-436f-9930-3bf69f979bdd" method="GET"><con:description>
 Returns an Accounting Entry by Id</con:description><con:settings/><con:parameters><con:parameter required="true"><con:name>id</con:name><con:value>${#TestCase#userId}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:integer</con:type><con:default>${#TestCase#userId}</con:default><con:description xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:acc="http://radius-dev-v3.uk.cxn-network.net/api/accounting_entries/">acc:Response</con:element></con:representation><con:request name="Request 1" id="2b6df3df-51a5-4d60-9c1f-c427800aac9a" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://radius-dev-v3.uk.cxn-network.net/api</con:endpoint><con:request/><con:originalUri>http://radius-dev-v3.uk.cxn-network.net/api/accounting_entries/</con:originalUri><con:credentials><con:username>martin</con:username><con:password>connexin123456</con:password><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="id" value="${#TestCase#userId}" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>id</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/admins" path="/admins" id="4a7cfc7f-9ddf-44db-9f6f-8ca3ee2c5288"><con:settings/><con:parameters/><con:method name="GET" id="6196fb58-c4b5-490a-85fa-3f9b11cb38d2" method="GET"><con:description>
@@ -987,171 +987,171 @@ for(def entry : jsonResponse.Audits) {
 </script></con:config></con:testStep><con:properties><con:property><con:name>auditsResponse</con:name><con:value>{
     "Audits": [
         {
-            "id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+            "id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
             "event": "CREATE",
             "model": "Admin",
-            "entity_id": 78,
-            "request_id": "5cc2bee1-53e4-421b-985e-1b52b03a6a9c",
-            "json_object": "{\"Admin\":{\"id\":\"78\",\"username\":\"Test Admin 62e0f3f7-8344-49a4-9158-b421fad72ef3\",\"password\":\"$2a$10$jpwjCGZTKn9bzstYNb0ttehHIn9jg1RMH5BeAX.f2VKh23KmJVLzC\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
+            "entity_id": 84,
+            "request_id": "5ccabd35-ab0c-470f-a413-77c1b03a6a9c",
+            "json_object": "{\"Admin\":{\"id\":\"84\",\"username\":\"Test Admin 83b263cc-1b23-4d4d-a186-05323dbb5add\",\"password\":\"$2a$10$m0keO1moGGC2Nn3q5Dz2\\\/uc0vxwuDb0WkRJL244SXnYtRTlwb0Czu\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
             "description": "martin",
             "source_id": 5,
-            "created": "2019-04-26T08:18:41Z",
+            "created": "2019-05-02T09:49:41Z",
             "AuditDeltas": [
                 {
-                    "id": "5cc2bee1-1304-4cfa-bd3b-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-0d58-4e6b-b277-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
+                    "property_name": "id",
+                    "old_value": "",
+                    "new_value": 84
+                },
+                {
+                    "id": "5ccabd35-3da4-4cd8-a9b1-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "deleted",
                     "old_value": "",
                     "new_value": ""
                 },
                 {
-                    "id": "5cc2bee1-2a98-4af4-8697-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-6474-42f7-9dfa-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "username",
                     "old_value": "",
-                    "new_value": "Test Admin 62e0f3f7-8344-49a4-9158-b421fad72ef3"
+                    "new_value": "Test Admin 83b263cc-1b23-4d4d-a186-05323dbb5add"
                 },
                 {
-                    "id": "5cc2bee1-5bac-4f2c-a6e4-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-819c-4156-a9ad-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "deleted_date",
                     "old_value": "",
                     "new_value": null
                 },
                 {
-                    "id": "5cc2bee1-7728-4b94-9eb3-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-b0a0-44bb-98f0-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "password",
                     "old_value": "",
-                    "new_value": "$2a$10$jpwjCGZTKn9bzstYNb0ttehHIn9jg1RMH5BeAX.f2VKh23KmJVLzC"
+                    "new_value": "$2a$10$m0keO1moGGC2Nn3q5Dz2\/uc0vxwuDb0WkRJL244SXnYtRTlwb0Czu"
                 },
                 {
-                    "id": "5cc2bee1-a008-4e32-91a8-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-c65c-4e60-84b1-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "Reseller",
                     "old_value": "",
                     "new_value": ""
                 },
                 {
-                    "id": "5cc2bee1-c674-428f-9aa6-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
+                    "id": "5ccabd35-f8e4-4778-a982-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-30a4-446f-a5bd-77c1b03a6a9c",
                     "property_name": "super",
                     "old_value": "",
                     "new_value": 1
-                },
-                {
-                    "id": "5cc2bee1-d05c-45b9-a28a-1b52b03a6a9c",
-                    "audit_id": "5cc2bee1-d33c-42fd-8813-1b52b03a6a9c",
-                    "property_name": "id",
-                    "old_value": "",
-                    "new_value": 78
                 }
             ]
         },
         {
-            "id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
+            "id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
             "event": "CREATE",
             "model": "Admin",
-            "entity_id": 77,
-            "request_id": "5cc2bee0-e638-4026-874c-1b52b03a6a9c",
-            "json_object": "{\"Admin\":{\"id\":\"77\",\"username\":\"Test Admin 7ffab2c9-f1dd-49b7-92ea-6c2732caeff7\",\"password\":\"$2a$10$zgvNiYiIDJxiSMmVdfgTL.B0cGNLURp0Nm0vJqNx\\\/esits10tvM\\\/a\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
+            "entity_id": 83,
+            "request_id": "5ccabd35-1930-46c7-9ef8-77c1b03a6a9c",
+            "json_object": "{\"Admin\":{\"id\":\"83\",\"username\":\"Test Admin 7ffab2c9-f1dd-49b7-92ea-6c2732caeff7\",\"password\":\"$2a$10$D05eMtl1gf0svw\\\/\\\/zJCX.Oi3FYy9bNf3VUhvM14B8dAjl7bCLoe5e\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
             "description": "martin",
             "source_id": 5,
-            "created": "2019-04-26T08:18:40Z",
+            "created": "2019-05-02T09:49:41Z",
             "AuditDeltas": [
                 {
-                    "id": "5cc2bee0-1a48-432a-a5c6-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
+                    "id": "5ccabd35-194c-449c-a335-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
+                    "property_name": "password",
+                    "old_value": "",
+                    "new_value": "$2a$10$D05eMtl1gf0svw\/\/zJCX.Oi3FYy9bNf3VUhvM14B8dAjl7bCLoe5e"
+                },
+                {
+                    "id": "5ccabd35-3160-420b-840a-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
+                    "property_name": "Reseller",
+                    "old_value": "",
+                    "new_value": ""
+                },
+                {
+                    "id": "5ccabd35-5b74-4274-8876-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
+                    "property_name": "id",
+                    "old_value": "",
+                    "new_value": 83
+                },
+                {
+                    "id": "5ccabd35-5e70-40dc-a892-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
                     "property_name": "super",
                     "old_value": "",
                     "new_value": 1
                 },
                 {
-                    "id": "5cc2bee0-36f0-4600-a67b-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
-                    "property_name": "id",
-                    "old_value": "",
-                    "new_value": 77
-                },
-                {
-                    "id": "5cc2bee0-5ddc-472a-b788-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
+                    "id": "5ccabd35-a844-490a-83c6-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
                     "property_name": "deleted",
                     "old_value": "",
                     "new_value": ""
                 },
                 {
-                    "id": "5cc2bee0-8bb4-49eb-bab5-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
+                    "id": "5ccabd35-b934-44d5-ae36-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
                     "property_name": "username",
                     "old_value": "",
                     "new_value": "Test Admin 7ffab2c9-f1dd-49b7-92ea-6c2732caeff7"
                 },
                 {
-                    "id": "5cc2bee0-a684-48b9-a847-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
+                    "id": "5ccabd35-ee30-4c78-99e8-77c1b03a6a9c",
+                    "audit_id": "5ccabd35-8118-44bb-a961-77c1b03a6a9c",
                     "property_name": "deleted_date",
                     "old_value": "",
                     "new_value": null
-                },
-                {
-                    "id": "5cc2bee0-d4c0-4db2-9ade-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
-                    "property_name": "password",
-                    "old_value": "",
-                    "new_value": "$2a$10$zgvNiYiIDJxiSMmVdfgTL.B0cGNLURp0Nm0vJqNx\/esits10tvM\/a"
-                },
-                {
-                    "id": "5cc2bee0-ea7c-47f8-8b35-1b52b03a6a9c",
-                    "audit_id": "5cc2bee0-5974-4848-a468-1b52b03a6a9c",
-                    "property_name": "Reseller",
-                    "old_value": "",
-                    "new_value": ""
                 }
             ]
         },
         {
-            "id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+            "id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
             "event": "CREATE",
             "model": "Reseller",
-            "entity_id": 424,
-            "request_id": "5cc2bedf-c8bc-4488-9e4c-6a6db03a6a9c",
-            "json_object": "{\"Reseller\":{\"id\":\"424\",\"name\":\"Test Reseller-09:18:25.450\",\"deleted\":false,\"deleted_date\":null,\"Admin\":\"\"}}",
+            "entity_id": 426,
+            "request_id": "5ccabd33-e850-4b22-8eed-05a3b03a6a9c",
+            "json_object": "{\"Reseller\":{\"id\":\"426\",\"name\":\"Test Reseller-10:49:23.012\",\"deleted\":false,\"deleted_date\":null,\"Admin\":\"\"}}",
             "description": "martin",
             "source_id": 5,
-            "created": "2019-04-26T08:18:39Z",
+            "created": "2019-05-02T09:49:39Z",
             "AuditDeltas": [
                 {
-                    "id": "5cc2bedf-0f28-47d9-bc11-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+                    "id": "5ccabd33-1bfc-45b5-9d24-05a3b03a6a9c",
+                    "audit_id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
                     "property_name": "deleted_date",
                     "old_value": "",
                     "new_value": null
                 },
                 {
-                    "id": "5cc2bedf-2914-4758-a466-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+                    "id": "5ccabd33-36b0-4ba9-af8a-05a3b03a6a9c",
+                    "audit_id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
                     "property_name": "id",
                     "old_value": "",
-                    "new_value": 424
+                    "new_value": 426
                 },
                 {
-                    "id": "5cc2bedf-54b0-4156-8765-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+                    "id": "5ccabd33-5ec8-48c9-8518-05a3b03a6a9c",
+                    "audit_id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
                     "property_name": "Admin",
                     "old_value": "",
                     "new_value": ""
                 },
                 {
-                    "id": "5cc2bedf-7ea0-484c-8d27-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+                    "id": "5ccabd33-9088-4c7b-a0d0-05a3b03a6a9c",
+                    "audit_id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
                     "property_name": "name",
                     "old_value": "",
-                    "new_value": "Test Reseller-09:18:25.450"
+                    "new_value": "Test Reseller-10:49:23.012"
                 },
                 {
-                    "id": "5cc2bedf-c61c-4643-afc1-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-3cc0-44c7-9b1f-6a6db03a6a9c",
+                    "id": "5ccabd33-d868-4758-a7f2-05a3b03a6a9c",
+                    "audit_id": "5ccabd33-52f4-4b8c-9fe1-05a3b03a6a9c",
                     "property_name": "deleted",
                     "old_value": "",
                     "new_value": ""
@@ -1159,140 +1159,140 @@ for(def entry : jsonResponse.Audits) {
             ]
         },
         {
-            "id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
+            "id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
             "event": "CREATE",
             "model": "Nas",
-            "entity_id": 38,
-            "request_id": "5cc2bedf-b62c-466c-8a9d-6a6db03a6a9c",
-            "json_object": "{\"Nas\":{\"id\":\"38\",\"nasname\":\"1.1.1.1\",\"shortname\":\"NAS-f16e08cb\",\"type\":\"other\",\"ports\":null,\"secret\":\"be74d353\",\"server\":null,\"community\":null,\"description\":\"RADIUS Client 09:18:25.219\"}}",
+            "entity_id": 40,
+            "request_id": "5ccabd32-96a8-4856-94c1-1c09b03a6a9c",
+            "json_object": "{\"Nas\":{\"id\":\"40\",\"nasname\":\"1.1.1.1\",\"shortname\":\"NAS-92cddbaa\",\"type\":\"other\",\"ports\":null,\"secret\":\"34794ae7\",\"server\":null,\"community\":null,\"description\":\"RADIUS Client 10:49:22.660\"}}",
             "description": "martin",
             "source_id": 5,
-            "created": "2019-04-26T08:18:39Z",
+            "created": "2019-05-02T09:49:38Z",
             "AuditDeltas": [
                 {
-                    "id": "5cc2bedf-3bf0-4244-bef9-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "description",
-                    "old_value": "",
-                    "new_value": "RADIUS Client 09:18:25.219"
-                },
-                {
-                    "id": "5cc2bedf-5c2c-468a-acac-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "nasname",
-                    "old_value": "",
-                    "new_value": "1.1.1.1"
-                },
-                {
-                    "id": "5cc2bedf-5d34-4e34-9d7c-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "shortname",
-                    "old_value": "",
-                    "new_value": "NAS-f16e08cb"
-                },
-                {
-                    "id": "5cc2bedf-80d4-49f4-bcca-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "community",
-                    "old_value": "",
-                    "new_value": null
-                },
-                {
-                    "id": "5cc2bedf-93c0-46f7-9869-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "type",
-                    "old_value": "",
-                    "new_value": "other"
-                },
-                {
-                    "id": "5cc2bedf-a6c0-4c0b-bc38-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
+                    "id": "5ccabd32-14a0-4f54-a1c3-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
                     "property_name": "ports",
                     "old_value": "",
                     "new_value": null
                 },
                 {
-                    "id": "5cc2bedf-b19c-408f-b5fc-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
+                    "id": "5ccabd32-1740-4e1d-b9a2-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "shortname",
+                    "old_value": "",
+                    "new_value": "NAS-92cddbaa"
+                },
+                {
+                    "id": "5ccabd32-1d00-4bfc-9480-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "nasname",
+                    "old_value": "",
+                    "new_value": "1.1.1.1"
+                },
+                {
+                    "id": "5ccabd32-20e0-4e7e-a3c1-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "type",
+                    "old_value": "",
+                    "new_value": "other"
+                },
+                {
+                    "id": "5ccabd32-36ec-41a2-8b51-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
                     "property_name": "id",
                     "old_value": "",
-                    "new_value": 38
+                    "new_value": 40
                 },
                 {
-                    "id": "5cc2bedf-b254-4059-a3e0-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
-                    "property_name": "secret",
+                    "id": "5ccabd32-6ef8-4780-8c36-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "community",
                     "old_value": "",
-                    "new_value": "be74d353"
+                    "new_value": null
                 },
                 {
-                    "id": "5cc2bedf-b294-4248-83d4-6a6db03a6a9c",
-                    "audit_id": "5cc2bedf-45ec-4793-8ce5-6a6db03a6a9c",
+                    "id": "5ccabd32-9710-4cdf-8dc0-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "description",
+                    "old_value": "",
+                    "new_value": "RADIUS Client 10:49:22.660"
+                },
+                {
+                    "id": "5ccabd32-b698-488f-98d2-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
                     "property_name": "server",
                     "old_value": "",
                     "new_value": null
+                },
+                {
+                    "id": "5ccabd32-e0ec-40cd-92cd-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-1218-4978-af16-1c09b03a6a9c",
+                    "property_name": "secret",
+                    "old_value": "",
+                    "new_value": "34794ae7"
                 }
             ]
         },
         {
-            "id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+            "id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
             "event": "CREATE",
             "model": "Admin",
-            "entity_id": 75,
-            "request_id": "5cc1c7e1-c208-46d8-b618-6a6db03a6a9c",
-            "json_object": "{\"Admin\":{\"id\":\"75\",\"username\":\"Test Admin 7ffab2c9-f1dd-49b7-92ea-6c2732caeff7\",\"password\":\"$2a$10$WiEPs9zX6ojLW9RItXcZ5.k2fVhINzMxepoUnhwGqRG6MzyuVe8xa\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
+            "entity_id": 82,
+            "request_id": "5ccabd32-d0ec-4dad-92ea-1c09b03a6a9c",
+            "json_object": "{\"Admin\":{\"id\":\"82\",\"username\":\"Test Admin-10:49:22.315\",\"password\":\"$2a$10$\\\/tZtdpfM4PEpQ7oLLQHSIOg7OWtLHH0ROa8K7fjcwfJ9bhkW.HKHW\",\"super\":true,\"deleted\":false,\"deleted_date\":null,\"Reseller\":\"\"}}",
             "description": "martin",
             "source_id": 5,
-            "created": "2019-04-25T14:44:49Z",
+            "created": "2019-05-02T09:49:38Z",
             "AuditDeltas": [
                 {
-                    "id": "5cc1c7e1-048c-4a75-9d81-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+                    "id": "5ccabd32-0ccc-4389-8faf-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
                     "property_name": "super",
                     "old_value": "",
                     "new_value": 1
                 },
                 {
-                    "id": "5cc1c7e1-19c8-4979-a024-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+                    "id": "5ccabd32-17e0-4541-9428-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
                     "property_name": "id",
                     "old_value": "",
-                    "new_value": 75
+                    "new_value": 82
                 },
                 {
-                    "id": "5cc1c7e1-3558-4db3-9188-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
-                    "property_name": "Reseller",
-                    "old_value": "",
-                    "new_value": ""
-                },
-                {
-                    "id": "5cc1c7e1-4884-48a6-8aea-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+                    "id": "5ccabd32-518c-445f-a7e4-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
                     "property_name": "deleted",
                     "old_value": "",
                     "new_value": ""
                 },
                 {
-                    "id": "5cc1c7e1-71ac-4d9a-b123-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+                    "id": "5ccabd32-7410-4879-91cf-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
                     "property_name": "username",
                     "old_value": "",
-                    "new_value": "Test Admin 7ffab2c9-f1dd-49b7-92ea-6c2732caeff7"
+                    "new_value": "Test Admin-10:49:22.315"
                 },
                 {
-                    "id": "5cc1c7e1-bf04-4ac4-9540-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
-                    "property_name": "password",
-                    "old_value": "",
-                    "new_value": "$2a$10$WiEPs9zX6ojLW9RItXcZ5.k2fVhINzMxepoUnhwGqRG6MzyuVe8xa"
-                },
-                {
-                    "id": "5cc1c7e1-e2ec-4933-be3b-6a6db03a6a9c",
-                    "audit_id": "5cc1c7e1-3990-4e82-bcf6-6a6db03a6a9c",
+                    "id": "5ccabd32-92c8-46ef-ad5d-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
                     "property_name": "deleted_date",
                     "old_value": "",
                     "new_value": null
+                },
+                {
+                    "id": "5ccabd32-bac4-4d07-8b2f-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
+                    "property_name": "password",
+                    "old_value": "",
+                    "new_value": "$2a$10$\/tZtdpfM4PEpQ7oLLQHSIOg7OWtLHH0ROa8K7fjcwfJ9bhkW.HKHW"
+                },
+                {
+                    "id": "5ccabd32-d530-4f37-b2d1-1c09b03a6a9c",
+                    "audit_id": "5ccabd32-3f78-4aaa-9286-1c09b03a6a9c",
+                    "property_name": "Reseller",
+                    "old_value": "",
+                    "new_value": ""
                 }
             ]
         }
@@ -1879,7 +1879,20 @@ assert jsonResponse.meta.limit == 5
 //	}
 //}
 </script></con:config></con:testStep><con:properties><con:property><con:name>transientPackagesResponse</con:name><con:value>{
-    "TransientPackages": [],
+    "TransientPackages": [
+        {
+            "id": 68,
+            "user_id": 9118,
+            "start": "2019-05-02T00:00:00Z",
+            "end": "2019-05-04T00:00:00Z",
+            "precedence": 5,
+            "mode": "Supplement",
+            "speed_up": 60,
+            "speed_down": 60,
+            "upload_limit": -1,
+            "download_limit": -1
+        }
+    ],
     "meta": {
         "page": 1,
         "limit": 5
@@ -3915,20 +3928,20 @@ testSuite.setPropertyValue('testAdminId', jsonResponse.Admin.id)
 testSuite.setPropertyValue('testAdminUsername', jsonResponse.Admin.username)
 </script></con:config></con:testStep><con:properties><con:property><con:name>createAdminRequest</con:name><con:value>{
 	"Admin": {
-		"username": "Test Admin-09:44:50.321",
-		"password": "6dbec5a3-b6cc-4dee-83de-ef4f0bc0f305",
+		"username": "Test Admin-10:52:59.623",
+		"password": "dac903d7-2f00-4ef4-bc8a-9a4e6ad36c08",
 		"super": true,
 		"Resellers": [
 			{
-			"name": "Test Reseller-09:44:50.321"
+			"name": "Test Reseller-10:52:59.623"
 			}
 		]
 	}
 }
-</con:value></con:property><con:property><con:name>testAdminUsername</con:name><con:value>Test Admin-09:44:50.321</con:value></con:property><con:property><con:name>testReseller</con:name><con:value>Test Reseller-09:44:50.321</con:value></con:property><con:property><con:name>createAdminsResponse</con:name><con:value>{
+</con:value></con:property><con:property><con:name>testAdminUsername</con:name><con:value>Test Admin-10:52:59.623</con:value></con:property><con:property><con:name>testReseller</con:name><con:value>Test Reseller-10:52:59.623</con:value></con:property><con:property><con:name>createAdminsResponse</con:name><con:value>{
     "Admin": {
-        "id": 79,
-        "username": "Test Admin-09:44:50.321",
+        "id": 85,
+        "username": "Test Admin-10:52:59.623",
         "super": true,
         "Resellers": []
     }
@@ -4032,26 +4045,26 @@ testSuite.setPropertyValue('testNasId', jsonResponse.Nas.id)
 </script></con:config></con:testStep><con:properties><con:property><con:name>createNasRequest</con:name><con:value>{
 	"Nas": {
 		"nasname": "1.1.1.1",
-		"shortname": "NAS-9ef40c6d",
+		"shortname": "NAS-7d62b8a7",
 		"type": "other",
 		"ports": null,
-		"secret": "ae37c280",
+		"secret": "67ba451d",
 		"server": null,
 		"community": null,
-		"description": "RADIUS Client 09:44:50.636"
+		"description": "RADIUS Client 10:52:59.831"
 	}
 }
-</con:value></con:property><con:property><con:name>testNasShortName</con:name><con:value>NAS-9ef40c6d</con:value></con:property><con:property><con:name>testNasSecret</con:name><con:value>ae37c280</con:value></con:property><con:property><con:name>createNasResponse</con:name><con:value>{
+</con:value></con:property><con:property><con:name>testNasShortName</con:name><con:value>NAS-7d62b8a7</con:value></con:property><con:property><con:name>testNasSecret</con:name><con:value>67ba451d</con:value></con:property><con:property><con:name>createNasResponse</con:name><con:value>{
     "Nas": {
-        "id": 39,
+        "id": 41,
         "nasname": "1.1.1.1",
-        "shortname": "NAS-9ef40c6d",
+        "shortname": "NAS-7d62b8a7",
         "type": "other",
         "ports": null,
-        "secret": "ae37c280",
+        "secret": "67ba451d",
         "server": null,
         "community": null,
-        "description": "RADIUS Client 09:44:50.636"
+        "description": "RADIUS Client 10:52:59.831"
     }
 }</con:value></con:property></con:properties></con:testCase><con:testCase id="fb7526ee-107d-46d3-b1f8-537a2085e25a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Create radius attributes" searchProperties="true"><con:description>TestCase generated for REST Resource [/radius_attributes] located at [/radius_attributes{id}]</con:description><con:settings/><con:testStep type="groovy" name="Given content for the request" id="7211def3-458d-4655-afce-78a4f5227585"><con:settings/><con:config><script>import groovy.json.JsonSlurper
 
@@ -4180,13 +4193,13 @@ testSuite.setPropertyValue('testRadiusAttributeId', jsonResponse.RadiusAttribute
 </script></con:config></con:testStep><con:properties><con:property><con:name>createResellerRequest</con:name><con:value>
 {
   "Reseller": {
-    "name": "Test Reseller-09:44:50.965"
+    "name": "Test Reseller-10:53:00.103"
   }
 }
-</con:value></con:property><con:property><con:name>testResellerName</con:name><con:value>Test Reseller-09:44:50.965</con:value></con:property><con:property><con:name>createResellerResponse</con:name><con:value>{
+</con:value></con:property><con:property><con:name>testResellerName</con:name><con:value>Test Reseller-10:53:00.103</con:value></con:property><con:property><con:name>createResellerResponse</con:name><con:value>{
     "Reseller": {
-        "id": 425,
-        "name": "Test Reseller-09:44:50.965"
+        "id": 427,
+        "name": "Test Reseller-10:53:00.103"
     }
 }</con:value></con:property></con:properties></con:testCase><con:testCase id="85a7cd87-ad7b-48e1-9bac-799203b666da" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Create static ip ranges" searchProperties="true"><con:description>TestCase generated for REST Resource [/static_ip_ranges] located at [/static_ip_ranges]</con:description><con:settings/><con:testStep type="groovy" name="Given content for the request" id="787459a0-238c-4189-9452-66b76ca4a7c8"><con:settings/><con:config><script>import groovy.json.JsonSlurper
 
@@ -4541,9 +4554,9 @@ assert jsonResponse.RadiusAttributes != null
 testSuite.setPropertyValue('testUSerId', jsonResponse.User.id)
 testSuite.setPropertyValue('testUSerId', jsonResponse.TransientPackages.id)
 testSuite.setPropertyValue('testUSerId', jsonResponse.RadiusAttributes.id)
-</script></con:config></con:testStep><con:properties><con:property><con:name>testUsername</con:name><con:value>TEST094451651</con:value></con:property><con:property><con:name>createUserRequest</con:name><con:value>{
+</script></con:config></con:testStep><con:properties><con:property><con:name>testUsername</con:name><con:value>TEST105300642</con:value></con:property><con:property><con:name>createUserRequest</con:name><con:value>{
 	"User": {
-		"username": "TEST0944516510000000",
+		"username": "TEST1053006420000000",
 		"password": "01234567890123456789",
 		"hashed_password": false,
 		"base_speed_up": 60,
@@ -5620,7 +5633,20 @@ for(def entry : jsonResponse.TransientPackages) {
 	}
 }
 </script></con:config></con:testStep><con:properties><con:property><con:name>packagesForIdResponse</con:name><con:value>{
-    "TransientPackages": [],
+    "TransientPackages": [
+        {
+            "id": 68,
+            "user_id": 9118,
+            "start": "2019-05-02T00:00:00Z",
+            "end": "2019-05-04T00:00:00Z",
+            "precedence": 5,
+            "mode": "Supplement",
+            "speed_up": 60,
+            "speed_down": 60,
+            "upload_limit": -1,
+            "download_limit": -1
+        }
+    ],
     "meta": {
         "page": 1,
         "limit": 5
@@ -6717,8 +6743,8 @@ testRunner.testCase.setPropertyValue('invalidRequest', jsonRequestStr)
 }
 </con:value></con:property><con:property><con:name>invalidRequest</con:name><con:value>{
   "Admin": {
-    "username": "Test Admin 9fc7a8f8-a881-42b4-b4c9-ab6a28f8ad2e",
-    "password": "452396bf-7c14-4e29-a5f7-4ebc07c03bfa",
+    "username": "Test Admin 4b5ee259-ecf2-4e86-b1c7-29a2437a4155",
+    "password": "441b50f5-80c2-416e-920b-21a729b5724b",
     "super": true,
     "Resellers": [
       {
@@ -6770,8 +6796,8 @@ testRunner.testCase.setPropertyValue('invalidCreateAdminRequest', jsonRequestStr
 }
 </con:value></con:property><con:property><con:name>invalidCreateAdminRequest</con:name><con:value>{
   "Admin": {
-    "username": "Test Admin d97200fd-47dd-44cb-a3ad-af756c9bfb2b",
-    "password": "f96a822d-b82a-41ee-9f93-ca421722b4d8",
+    "username": "Test Admin a938d500-c50e-4b40-95c5-e8c68a60031d",
+    "password": "adea6767-921d-4344-b4fe-6ec859e2a9c3",
     "super": true,
     "Resellers": [
       {
@@ -6811,8 +6837,8 @@ testRunner.testCase.setPropertyValue('createAdminJson', jsonRequestStr)
 </script></con:config></con:testStep><con:testStep type="restrequest" name="When /admins is Created" id="7750311d-4f98-4bc5-b398-1b5d5390864f"><con:settings/><con:config service="Radius3 API" resourcePath="/admins" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="When /admins is Created" id="b5b5d556-57d8-4b79-ad4e-2ed5b410378f" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://radius-dev-v3.uk.cxn-network.net/api</con:endpoint><con:request>${#TestCase#createAdminJson}
 </con:request><con:originalUri>http://radius-dev-v3.uk.cxn-network.net/api/admins</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="e75f63a5-aa34-408b-b03d-dd4212af69e8" name="Valid HTTP Status Codes"><con:configuration><codes>400</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="fc66c8fc-60ea-491f-b073-80e57ac6522f" name="Invalid HTTP Status Codes"><con:configuration><codes>200, 500</codes></con:configuration></con:assertion><con:credentials><con:username>martin</con:username><con:password>connexin123456</con:password><con:domain xsi:nil="true"/><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Then the response is as expected" id="ab264983-3aa5-4977-a0e5-065e49af78d4"><con:settings/><con:config><script>assert false</script></con:config></con:testStep><con:properties><con:property><con:name>createAdminJson</con:name><con:value>{
   "Admin": {
-    "username": "Test Admin a57998da-088d-415d-83b6-21f16f92c757",
-    "password": "ff68aed7-fded-4d4f-96da-5ee6b502681d",
+    "username": "Test Admin 668bf935-adc6-4f81-ac2c-c7a98d1ad115",
+    "password": "100b3e6e-617c-47f3-a932-94bb530c2cce",
     "super": true,
     "Resellers": [
       {
@@ -7033,7 +7059,7 @@ assert jsonResponse.Nas.type != null
 assert jsonResponse.Nas.secret != null
 assert jsonResponse.Nas.secret == expectedNasSecret
 assert jsonResponse.Nas.description != null
-</script></con:config></con:testStep><con:properties><con:property><con:name>testUsername</con:name><con:value>Test User-09:44:53.869</con:value></con:property><con:property><con:name>createUserRequest</con:name><con:value>{
+</script></con:config></con:testStep><con:properties><con:property><con:name>testUsername</con:name><con:value>Test User-10:53:02.359</con:value></con:property><con:property><con:name>createUserRequest</con:name><con:value>{
 	"User": {
 		"username": "Test User-17:15:30.391",
 		"password": "820c41ff-a71b-4ed4-86a9-1f670cf4ed6e",
@@ -7051,8 +7077,8 @@ assert jsonResponse.Nas.description != null
 }
 </con:value></con:property><con:property><con:name>invalidCreateUserRequest</con:name><con:value>{
 	"User": {
-		"username": "Test User-09:44:53.869",
-		"password": "6f310531-734f-4b0f-b8bd-0756635beec2",
+		"username": "Test User-10:53:02.359",
+		"password": "089715ed-70a3-48bc-a556-cff4fad5971b",
 		"hashed_password": false,
 		"base_speed_up": 60,
 		"base_speed_down": 60,
@@ -7083,53 +7109,7 @@ assert jsonResponse.Nas.description != null
             "Status ID is not Valid"
         ]
     }
-}</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite id="909aaff4-4eb2-4ff8-b145-2d58da0b7ff4" name="Library" disabled="true"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ea2636a6-d034-4e14-a972-333706cafe42" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Meta-Programming" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Generate Test Plan for project from TestCases" id="a206a579-e378-49da-9d84-4eedc85b4000"><con:settings/><con:config><script>def project = testRunner.getTestCase().getTestSuite().getProject();
-String projectPath = new com.eviware.soapui.support.GroovyUtils(context).projectPath
-log.info "Project : ${project.name}"
-log.info "projectPath : ${projectPath}"
-String isoTimeStamp = new Date().format('yyyy-mm-dd-kkmmss')
-log.info "isoTimeStamp : ${isoTimeStamp}"
-
-def file = new File("${projectPath}/bdd/${project.name}.story")
-file.text = "# ${project.name}\n# ${isoTimeStamp}\n"
-
-for(testSuite in project.getTestSuiteList()) {
-	log.info "_ ${testSuite.label} ${testSuite.isDisabled() == true ? "(Disabled)" : ""}"
-	if (testSuite.isDisabled() == true) {
-		file.append("@disabled\n")
-	}
-	file.append("Feature : ${testSuite.label}\n")
-
-	for(testCase in testSuite.getTestCaseList()) {
-		log.info "__ ${testCase.label} ${testCase.isDisabled() == true ? "(Disabled)" : ""}"
-		if (testCase.isDisabled() == true) {
-			file.append("\t@disabled\n")
-		}
-		file.append("\tScenario : ${testCase.label}\n")
-
-		for(testStep in testCase.getTestStepList()) {
-			log.info "___ ${testStep.label} ${testStep.isDisabled() == true ? "(Disabled)" : ""}"
-			file.append("\t\t${testStep.label}\n")
-
-			if (testStep instanceof com.eviware.soapui.impl.wsdl.teststeps.RestTestRequestStep) {				
-				for(assertion in testStep.getAssertionList()) {
-					log.info "____ ${assertion.label}"
-					file.append("\t\t\t${assertion.label}\n")
-				}
-			}
-		}
-	}
-}
-
-
-//Feature: feature narrative
-//  Scenario: scenario narrative
-//   Given precondition
-//     And another precondition
-//    When the operation is performed
-//    Then the post-condition
-//     And another post-condition
-</script></con:config></con:testStep><con:testStep type="groovy" name="Refactor auto generated tests in current project" id="cf0d2327-d32e-4907-a844-d8dae8158af3"><con:settings/><con:config><script>
+}</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite id="909aaff4-4eb2-4ff8-b145-2d58da0b7ff4" name="Library" disabled="true"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ea2636a6-d034-4e14-a972-333706cafe42" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Meta-Programming" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Refactor auto generated tests in current project" id="cf0d2327-d32e-4907-a844-d8dae8158af3"><con:settings/><con:config><script>
 refactorGeneratedTests(testRunner.testCase.testSuite.project)
 cleanUp(testRunner.testCase.testSuite.project)
 
@@ -7437,7 +7417,7 @@ log.info testRunner.testCase.testSuite.project.getClass()
 log.info testRunner.testCase.testSuite.project.workspace.getClass()
 
 import com.eviware.soapui.impl.wsdl.teststeps.RestTestRequestStep;
-</script></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script" id="4853237d-0bd7-44f3-bb71-e3504077508d"><con:settings/><con:config><script/></con:config></con:testStep><con:testStep type="groovy" name="Refactor TestCase to regular English language" id="5ce77a8a-3a27-4bc8-a6f0-8e3de1ca025f"><con:settings/><con:config><script>
+</script></con:config></con:testStep><con:testStep type="groovy" name="Refactor TestCase to regular English language" id="5ce77a8a-3a27-4bc8-a6f0-8e3de1ca025f"><con:settings/><con:config><script>
 refactorGeneratedTests(testRunner.testCase.testSuite.project)
 
 def refactorGeneratedTests(def thisProject) {
@@ -7518,10 +7498,56 @@ project.testSuiteList.each{ testSuite ->
 		}
 	}
 }
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="653d4b7c-fede-4d27-ac1c-214c1ed60d35" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Reporting" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Generate Test Plan for project from TestCases" id="a206a579-e378-49da-9d84-4eedc85b4000"><con:settings/><con:config><script>def project = testRunner.getTestCase().getTestSuite().getProject();
+String projectPath = new com.eviware.soapui.support.GroovyUtils(context).projectPath
+log.info "Project : ${project.name}"
+log.info "projectPath : ${projectPath}"
+String isoTimeStamp = new Date().format('yyyy-mm-dd-kkmmss')
+log.info "isoTimeStamp : ${isoTimeStamp}"
+
+def file = new File("${projectPath}/bdd/${project.name}.story")
+file.text = "# ${project.name}\n# ${isoTimeStamp}\n"
+
+for(testSuite in project.getTestSuiteList()) {
+	log.info "_ ${testSuite.label} ${testSuite.isDisabled() == true ? "(Disabled)" : ""}"
+	if (testSuite.isDisabled() == true) {
+		file.append("@disabled\n")
+	}
+	file.append("Feature : ${testSuite.label}\n")
+
+	for(testCase in testSuite.getTestCaseList()) {
+		log.info "__ ${testCase.label} ${testCase.isDisabled() == true ? "(Disabled)" : ""}"
+		if (testCase.isDisabled() == true) {
+			file.append("\t@disabled\n")
+		}
+		file.append("\tScenario : ${testCase.label}\n")
+
+		for(testStep in testCase.getTestStepList()) {
+			log.info "___ ${testStep.label} ${testStep.isDisabled() == true ? "(Disabled)" : ""}"
+			file.append("\t\t${testStep.label}\n")
+
+			if (testStep instanceof com.eviware.soapui.impl.wsdl.teststeps.RestTestRequestStep) {				
+				for(assertion in testStep.getAssertionList()) {
+					log.info "____ ${assertion.label}"
+					file.append("\t\t\t${assertion.label}\n")
+				}
+			}
+		}
+	}
+}
+
+
+//Feature: feature narrative
+//  Scenario: scenario narrative
+//   Given precondition
+//     And another precondition
+//    When the operation is performed
+//    Then the post-condition
+//     And another post-condition
 </script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7090729c-4003-438a-973d-49ad02454731" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Useful Functions" searchProperties="true"><con:settings/><con:testStep type="groovy" name="TimeStamp" id="26272c58-c7a3-4292-9ce3-97b086c9dbc8"><con:settings/><con:config><script>
 log.info new Date().format("HH:mm:ss.SSS", TimeZone.getTimeZone('UTC'))
 log.info new Date().format("yyyyMMdd-HH:mm:ss.SSS", TimeZone.getTimeZone('UTC'))
-</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="653d4b7c-fede-4d27-ac1c-214c1ed60d35" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Reporting" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:properties/></con:testSuite><con:restMockService id="c0aa8d03-8989-494a-8918-068eb0a2c432" port="8089" path="/" host="TECH3" name="RADIUS3 Mock REST Service"><con:settings/><con:properties/><con:restMockAction name="/accounting_entries" method="GET" resourcePath="/accounting_entries" id="bd1dc882-fde0-46bf-9e21-8109497a6d89"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>/*
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:restMockService id="c0aa8d03-8989-494a-8918-068eb0a2c432" port="8089" path="/" host="TECH3" name="RADIUS3 Mock REST Service"><con:settings/><con:properties/><con:restMockAction name="/accounting_entries" method="GET" resourcePath="/accounting_entries" id="bd1dc882-fde0-46bf-9e21-8109497a6d89"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>/*
 // Script dispatcher is used to select a response based on the incoming request.
 // Here are few examples showing how to match based on path, query param, header and body
 

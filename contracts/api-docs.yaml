@@ -1,0 +1,1020 @@
+---
+swagger: "2.0"
+info:
+  version: "2.0"
+  title: "Radius3 API"
+basePath: ""
+paths:
+  /accounting_entries:
+    get:
+      operationId: "/accounting_entries"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "The unique ID for the User who's Accounting Entries are retrieved"
+        required: false
+        type: "int"
+      - name: "username"
+        in: "query"
+        description: "The RADIUS Username for Accounting Entries (depreciated)"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved (default: 1)"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page\
+          \ (default: 25)"
+        required: false
+        type: "int"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved (default: 1)"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page\
+          \ (default: 25)"
+        required: false
+        type: "int"
+      - name: "user"
+        in: "query"
+        description: "The unique ID for the User who's Accounting Entries are retrieved"
+        required: false
+        type: "int"
+      - name: "username"
+        in: "query"
+        description: "The RADIUS Username for Accounting Entries (depreciated)"
+        required: false
+        type: "string"
+      responses:
+        200: {}
+        400: {}
+  /accounting_entries/:
+    get:
+      operationId: "/accounting_entries/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: true
+        type: "int"
+      - name: "id"
+        in: "query"
+        required: true
+        type: "int"
+      responses:
+        200: {}
+  /admins:
+    get:
+      operationId: "/admins"
+      parameters:
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+    post:
+      operationId: "/admins"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        500: {}
+  /admins/{id}:
+    get:
+      operationId: "/admins/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+        404: {}
+    put:
+      operationId: "/admins/{id}"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        404: {}
+    delete:
+      operationId: "/admins/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204: {}
+  /audits:
+    get:
+      operationId: "/audits"
+      parameters:
+      - name: "model"
+        in: "query"
+        description: "The Model Name to return Audit Log Entries for"
+        required: false
+        type: "string"
+      - name: "entity_id"
+        in: "query"
+        description: "The Record Id to return Audit Log Entires for"
+        required: false
+        type: "string"
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Audit Log Entries for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "model"
+        in: "query"
+        description: "The Model Name to return Audit Log Entries for"
+        required: false
+        type: "string"
+      - name: "entity_id"
+        in: "query"
+        description: "The Record Id to return Audit Log Entires for"
+        required: false
+        type: "string"
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Audit Log Entries for"
+        required: false
+        type: "string"
+      responses:
+        200: {}
+  /audits/{id}:
+    get:
+      operationId: "/audits/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+  /event_types:
+    get:
+      operationId: "/event_types"
+      parameters:
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+  /event_types/{id}:
+    get:
+      operationId: "/event_types/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+  /events:
+    get:
+      operationId: "/events"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Events for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Events for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+  /events/{id}:
+    get:
+      operationId: "/events/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+  /nas:
+    get:
+      operationId: "/nas"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "string"
+      responses:
+        200: {}
+    post:
+      operationId: "/nas"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        500: {}
+  /nas/{id}:
+    get:
+      operationId: "/nas/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+        400: {}
+    put:
+      operationId: "/nas/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/nas/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204: {}
+  /radius_attributes:
+    get:
+      operationId: "/radius_attributes"
+      parameters:
+      - name: "user"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "user"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+        400: {}
+    post:
+      operationId: "/radius_attributes"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        400: {}
+  /radius_attributes/{id}:
+    get:
+      operationId: "/radius_attributes/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+        400: {}
+    put:
+      operationId: "/radius_attributes/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/radius_attributes/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204: {}
+  /resellers:
+    get:
+      operationId: "/resellers"
+      parameters:
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "name"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+        400: {}
+    post:
+      operationId: "/resellers"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /resellers/{id}:
+    get:
+      operationId: "/resellers/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+    put:
+      operationId: "/resellers/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/resellers/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204: {}
+  /static_ip_ranges:
+    get:
+      operationId: "/static_ip_ranges"
+      parameters:
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Static IP Ranges for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Static IP Ranges for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+        400: {}
+    post:
+      operationId: "/static_ip_ranges"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /static_ip_ranges/{id}:
+    get:
+      operationId: "/static_ip_ranges/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      responses:
+        200: {}
+        400: {}
+    put:
+      operationId: "/static_ip_ranges/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/static_ip_ranges/{id}"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      responses:
+        204: {}
+        404: {}
+  /statuses:
+    get:
+      operationId: "/statuses"
+      parameters:
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Statuses for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Statuses for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+    post:
+      operationId: "/statuses"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /statuses/{id}:
+    get:
+      operationId: "/statuses/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      responses:
+        200: {}
+    put:
+      operationId: "/statuses/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/statuses/{id}"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "int"
+      responses:
+        204: {}
+        404: {}
+  /transient_packages:
+    get:
+      operationId: "/transient_packages"
+      parameters:
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Transient Packages for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "user"
+        in: "query"
+        description: "The User Id to return Transient Packages for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+    post:
+      operationId: "/transient_packages"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /transient_packages/:
+    get:
+      operationId: "/transient_packages/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200: {}
+    put:
+      operationId: "/transient_packages/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/transient_packages/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        204: {}
+  /users:
+    get:
+      operationId: "/users"
+      parameters:
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Users for"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "query"
+        description: "A List of RADIUS Usernames to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Users for"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "query"
+        description: "A List of RADIUS Usernames to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+    post:
+      operationId: "/users"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        400: {}
+  /users/generate_username:
+    get:
+      operationId: "/users/generate_username"
+      parameters: []
+      responses:
+        200: {}
+  /users/{id}:
+    get:
+      operationId: "/users/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+    put:
+      operationId: "/users/{id}"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+    delete:
+      operationId: "/users/{id}"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        204: {}
+        404: {}
+  /users/{id}/change_password:
+    post:
+      operationId: "/users/{id}/change_password"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /users/{id}/disconnect:
+    post:
+      operationId: "/users/{id}/disconnect"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /users/{id}/static_ip:
+    post:
+      operationId: "/users/{id}/static_ip"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+        404: {}
+    delete:
+      operationId: "/users/{id}/static_ip"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200: {}
+  /webhook_endpoints:
+    get:
+      operationId: "/webhook_endpoints"
+      parameters:
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "reseller"
+        in: "query"
+        description: "The Reseller Id to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+    post:
+      operationId: "/webhook_endpoints"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /webhook_endpoints/:
+    get:
+      operationId: "/webhook_endpoints/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200: {}
+    put:
+      operationId: "/webhook_endpoints/{id}"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Request body"
+        required: true
+      responses:
+        200: {}
+  /webhooks:
+    get:
+      operationId: "/webhooks"
+      parameters:
+      - name: "webhook_endpoint"
+        in: "query"
+        description: "The Webhook Endpoint Id to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      - name: "webhook_endpoint"
+        in: "query"
+        description: "The Webhook Endpoint Id to return Users for"
+        required: false
+        type: "string"
+      - name: "page"
+        in: "query"
+        description: "The page number of results to be retrieved"
+        required: false
+        type: "int"
+      - name: "limit"
+        in: "query"
+        description: "limit - The maximum number of records to retrieved per page"
+        required: false
+        type: "int"
+      responses:
+        200: {}
+        500: {}
+  /webhooks/:
+    get:
+      operationId: "/webhooks/{id}"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200: {}
